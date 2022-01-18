@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './SignupForm.module.css'
+import styles from './SignupFormCompany.module.css'
 import * as authService from '../../services/authService'
 
 const SignupForm = props => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    name: '',
+    companyName: '',
     email: '',
+    size: '',
+    location: '',
     password: '',
     passwordConf: '',
   })
@@ -31,10 +33,10 @@ const SignupForm = props => {
     }
   }
 
-  const { name, email, password, passwordConf } = formData
+  const { companyName, email, size, location, password, passwordConf } = formData
 
   const isFormInvalid = () => {
-    return !(name && email && password && password === passwordConf)
+    return !(companyName && email && size && location && password && password === passwordConf)
   }
 
   return (
@@ -43,15 +45,14 @@ const SignupForm = props => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
-      <h1>Individual Signup</h1>
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+        <label htmlFor="name" className={styles.label}>Company Name</label>
         <input
           type="text"
           autoComplete="off"
-          id="name"
-          value={name}
-          name="name"
+          id="companyName"
+          value={companyName}
+          name="companyName"
           onChange={handleChange}
         />
       </div>
@@ -63,6 +64,68 @@ const SignupForm = props => {
           id="email"
           value={email}
           name="email"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="size">Company Size</label>
+        <select
+          onChange={handleChange}
+          name='size'
+        >
+          <option
+            selected
+            name="size"
+            value='1-10'
+          >
+            1-10
+          </option>
+          <option
+            name="size"
+            value='11-50'
+          >
+            11-50
+          </option>
+          <option
+            name="size"
+            value='51-200'
+          >
+            51-200
+          </option>
+          <option
+            name="size"
+            value='201-1000'
+          >
+            201-1,000
+          </option>
+          <option
+            name="size"
+            value='1001-5000'
+          >
+            1,001-5,000
+          </option>
+          <option
+            name="size"
+            value='5001-10000'
+          >
+            5,001-10,000
+          </option>
+          <option
+            name="size"
+            value='10001+'
+          >
+            10,001+
+          </option>
+        </select>
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="location" className={styles.label}>Location</label>
+        <input
+          type="location"
+          autoComplete="off"
+          id="location"
+          value={location}
+          name="location"
           onChange={handleChange}
         />
       </div>
