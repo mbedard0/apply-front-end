@@ -25,7 +25,7 @@ const SignupForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await authService.signup(formData)
+      await authService.signupCompany(formData)
       props.handleSignupOrLogin()
       navigate('/')
     } catch (err) {
@@ -154,11 +154,11 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+        <button disabled={isFormInvalid()} className='btn'>
           Sign Up
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className='btn'>Cancel</button>
         </Link>
       </div>
     </form>
