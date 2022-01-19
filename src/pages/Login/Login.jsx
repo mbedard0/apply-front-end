@@ -10,9 +10,9 @@ const LoginPage = props => {
   }
 
   return (
-    <main className={styles.container}>
-      <h1>Log In</h1>
-      <p>{message}</p>
+    <main className='flex flex-col place-items-center'>
+      <h1 className="text-5xl my-5 font-bold">Log In</h1>
+      <p className="mb-5">{message}</p>
       <LoginForm
         handleSignupOrLogin={props.handleSignupOrLogin}
         updateMessage={updateMessage}
