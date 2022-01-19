@@ -43,9 +43,9 @@ const SignupForm = props => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
-      <h1>Individual Signup</h1>
-      <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+      {/* <h1>Individual Signup</h1> */}
+      <div className='form-control mt-5'>
+        <label htmlFor="name" className="label-text">Name</label>
         <input
           type="text"
           autoComplete="off"
@@ -53,10 +53,12 @@ const SignupForm = props => {
           value={name}
           name="name"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Name"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+      <div className='form-control mt-5'>
+        <label htmlFor="email" className="label-text">Email</label>
         <input
           type="text"
           autoComplete="off"
@@ -64,10 +66,12 @@ const SignupForm = props => {
           value={email}
           name="email"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Email"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+      <div className="form-control mt-5">
+        <label htmlFor="password" className="label-text">Password</label>
         <input
           type="password"
           autoComplete="off"
@@ -75,10 +79,12 @@ const SignupForm = props => {
           value={password}
           name="password"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Password"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
+      <div className="form-control mt-5">
+        <label htmlFor="confirm" className="label-text">
           Confirm Password
         </label>
         <input
@@ -88,14 +94,16 @@ const SignupForm = props => {
           value={passwordConf}
           name="passwordConf"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Password confirmation"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+      <div className='mt-5'>
+        <button disabled={isFormInvalid()} className='btn btn-success'>
           Sign Up
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className="btn">Cancel</button>
         </Link>
       </div>
     </form>

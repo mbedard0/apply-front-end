@@ -46,7 +46,7 @@ const SignupForm = props => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Company Name</label>
+        <label htmlFor="name" className='form-control mt-5'>Company Name</label>
         <input
           type="text"
           autoComplete="off"
@@ -54,10 +54,12 @@ const SignupForm = props => {
           value={companyName}
           name="companyName"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Company Name"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+      <div className='form-control mt-5'>
+        <label htmlFor="email" className="label-text">Email</label>
         <input
           type="text"
           autoComplete="off"
@@ -65,14 +67,20 @@ const SignupForm = props => {
           value={email}
           name="email"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Email"
         />
       </div>
-      <div>
+      <div className="form-control mt-5">
         <label htmlFor="size">Company Size</label>
         <select
           onChange={handleChange}
           name='size'
+          class="select select-bordered w-full max-w-xs"
         >
+          <option disabled="disabled" selected="selected">
+            Choose your company's size
+          </option> 
           <option
             selected
             name="size"
@@ -118,8 +126,8 @@ const SignupForm = props => {
           </option>
         </select>
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="location" className={styles.label}>Location</label>
+      <div className="form-control mt-5">
+        <label htmlFor="location" className="label-text">Location</label>
         <input
           type="location"
           autoComplete="off"
@@ -127,10 +135,12 @@ const SignupForm = props => {
           value={location}
           name="location"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Location"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+      <div className="form-control mt-5">
+        <label htmlFor="password" className="label-text">Password</label>
         <input
           type="password"
           autoComplete="off"
@@ -138,10 +148,12 @@ const SignupForm = props => {
           value={password}
           name="password"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Password"
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
+      <div className="form-control mt-5">
+        <label htmlFor="confirm" className="label-text">
           Confirm Password
         </label>
         <input
@@ -151,9 +163,11 @@ const SignupForm = props => {
           value={passwordConf}
           name="passwordConf"
           onChange={handleChange}
+          className="input input-bordered"
+          placeholder="Password confirmation"
         />
       </div>
-      <div className={styles.inputContainer}>
+      <div className='mt-5'>
         <button disabled={isFormInvalid()} className='btn'>
           Sign Up
         </button>

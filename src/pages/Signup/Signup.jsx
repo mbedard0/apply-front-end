@@ -21,26 +21,33 @@ const Signup = props => {
 
   return (
     <main className={styles.container}>
-      <h1>Sign Up</h1>
+      <h1
+        className="text-4xl pb-5 pt-2"
+      >
+        Sign Up
+      </h1>
       <p>{message}</p>
       { !status['type'] ?
       <>
-        <h3>
+        <h3
+          className="pb-5"
+        >
           Are you a job seeker or a company?
         </h3>
+        <div className="pb-5">
+          <button 
+            className='btn btn-primary btn-wide btn-lg'
+            onClick={handleIndividual}
+          >
+            Job Seeker
+          </button>
+        </div>
         <button 
-          className='btn'
-          onClick={handleIndividual}
-        >
-          Job Seeker
-        </button>
-        <button 
-          className='btn'
+          className='btn btn-secondary btn-wide btn-lg'
           onClick={handleCompany}
         >
           Company
         </button>
-
       </>
       : ''
       }
