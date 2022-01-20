@@ -17,14 +17,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [companies, setCompanies] = useState([])
 
-  useEffect(() => {
-    getCompanies()
-    .then(allCompanies => {
-      setCompanies(allCompanies)
-    })  
-    // need to reload after navigating here from create page
-    }, [])
-
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -73,7 +65,7 @@ const App = () => {
         />
         <Route 
           path='/companies'
-          element={<CompanyIndex companies={companies} />}
+          element={<CompanyIndex />}
         />
       </Routes>
     </>

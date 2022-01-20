@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './CompanyForm.module.css'
-import * as companyService from '../../services/companyService'
 
 const CompanyForm = props => {
-
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     companyName: '',
     description: '',
     size: '',
     location: '',
-    // need to pass in profile id in as admin info via hidden value
-    admin: ''
+    admins: props.user.profile
   })
 
   const handleChange = e => {
@@ -139,10 +135,6 @@ const CompanyForm = props => {
             className="input input-bordered"
             placeholder="Location"
           />
-        </div>
-        <div>
-          <input name="admin" hidden value="" />
-          {/* pass in profile id here */}
         </div>
         <div className='mt-7 mb-10 flex justify-center'>
           <button disabled={isFormInvalid()} className='btn mx-2'>
