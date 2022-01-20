@@ -20,25 +20,6 @@ async function signup(user) {
   }
 }
 
-async function signupCompany(company) {
-  try {
-    const res = await fetch(`${BASE_URL}/signup`, {
-      method: 'POST',
-      headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(company),
-    })
-    const json = await res.json()
-    if (json.token) {
-      tokenService.setToken(json.token)
-    }
-    if (json.err) {
-      throw new Error(json.err)
-    }
-  } catch (err) {
-    throw err
-  }
-}
-
 function getUser() {
   return tokenService.getUserFromToken()
 }
@@ -89,4 +70,4 @@ async function changePassword(credentials) {
   }
 }
 
-export { signup, signupCompany, getUser, logout, login, changePassword }
+export { signup, getUser, logout, login, changePassword }

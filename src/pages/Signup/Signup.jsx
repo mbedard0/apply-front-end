@@ -51,14 +51,12 @@ const Signup = props => {
       </>
       : ''
       }
-      { status['type'] === 'individual' ? 
-        <SignupForm {...props} updateMessage={updateMessage} /> :
+      { status['type'] ? 
+        <div>
+          <SignupForm {...props} statusType={status} updateMessage={updateMessage} />
+        </div> :
         ''
       }
-      { status['type'] === 'company' ? 
-      <SignupFormCompany {...props} updateMessage={updateMessage} /> :
-      ''
-    }
     </main>
   )
 }

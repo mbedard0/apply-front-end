@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupFormCompany.module.css'
 import * as authService from '../../services/authService'
 
+// will refactor this form to the create a company page
+
 const SignupForm = props => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -25,7 +27,7 @@ const SignupForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await authService.signupCompany(formData)
+      await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
     } catch (err) {
