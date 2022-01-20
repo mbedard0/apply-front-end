@@ -12,19 +12,16 @@ const CompanyIndex = props => {
 
   return (
     <>
-      <h1 className="text-4xl pb-5 pt-2 flex justify-center">All Companies</h1>
-      <div className="flex justify-center">
-        {/* need to put this in a grid */}
+      <h1 className="text-4xl pb-5 pt-2 flex justify-center mb-5">All Companies</h1>
+      {/* Maybe add a search bar here? */}
+      <div className="grid grid-cols-3 gap-4 place-content-center ml-20 mr-20">
         {/* link company show pages here */}
         {companies.map(company => {
           return (
-            <div class="card w-72 ml-5 card-bordered card-compact lg:card-normal">
-              <figure>
-                <img src="" />
-              </figure>
+            <div class="card w-4/5 place-content-center card-bordered card-compact lg:card-normal">
               <div class="card-body">
-                <h2 class="card-title">{company.companyName}</h2>
-                <h3>{company.location}</h3>
+                <h2 class="card-title link link-neutral">{company.companyName}</h2>
+                <h3 className="text-gray-500 mb-2 -mt-1 italic">{company.location}</h3>
                 <p>{company.description}</p>
               </div>
             </div>
