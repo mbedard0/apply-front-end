@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SignupForm from '../../components/SignupForm/SignupForm'
-import SignupFormCompany from '../../components/SignupFormCompany/SignupFormCompany'
+import SignupFormCompany from '../../components/CompanyForm/CompanyForm'
 import styles from './Signup.module.css'
 
 const Signup = props => {

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
-import SignupFormCompany from '../SignupFormCompany/SignupFormCompany'
+import SignupFormCompany from '../CompanyForm/CompanyForm'
 import * as authService from '../../services/authService'
 
 const SignupForm = props => {
@@ -12,6 +12,7 @@ const SignupForm = props => {
     email: '',
     password: '',
     passwordConf: '',
+    status: ''
   })
 
   const handleChange = e => {
@@ -27,10 +28,11 @@ const SignupForm = props => {
     try {
       await authService.signup(formData)
       props.handleSignupOrLogin()
-      if(statusType === 'individual') {
+      if (statusType === 'individual') {
         navigate('/profile')
       } else {
-        navigate('/create-company')
+        // need to add location/pass props here
+        navigate('/createCompany')
       }
     } catch (err) {
       props.updateMessage(err.message)
@@ -110,6 +112,13 @@ const SignupForm = props => {
             className="input input-bordered"
             placeholder="Password confirmation"
           />
+        </div>
+        <div>
+          {statusType === 'company' ?
+            <input name='status' hidden value='company' />
+            :
+            <input name='status' hidden value='individual' />
+          }
         </div>
         <div className='mt-7 mb-10 flex justify-center'>
           <button disabled={isFormInvalid()} className='btn btn-success mx-2'>

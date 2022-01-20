@@ -6,7 +6,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-import CreateCompany from './pages/CreateCompany/CreateCompanyForm'
+import CreateCompany from './pages/CreateCompany/CreateCompany'
 import * as authService from './services/authService'
 
 const App = () => {
