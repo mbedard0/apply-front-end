@@ -15,9 +15,9 @@ const NavBar = ({ user, handleLogout }) => {
             <a class="btn btn-ghost btn-sm rounded-btn">
               Find Jobs
             </a>
-            <a class="btn btn-ghost btn-sm rounded-btn">
+            <Link class="btn btn-ghost btn-sm rounded-btn" to='/companies'>
               Companies
-            </a>
+            </Link>
             <a class="btn btn-ghost btn-sm rounded-btn">
               About
             </a>

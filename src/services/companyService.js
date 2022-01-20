@@ -12,6 +12,14 @@ function createCompany(companyData) {
   .then(res => res.json())
 }
 
+function getCompanies() {
+  return fetch(BASE_URL, {
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`}
+  })
+  .then(res => res.json())
+}
+
 export {
-  createCompany
+  createCompany,
+  getCompanies
 }

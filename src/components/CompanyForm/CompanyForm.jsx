@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './CompanyForm.module.css'
 import * as companyService from '../../services/companyService'
 
 const CompanyForm = props => {
+
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     companyName: '',
@@ -21,7 +22,6 @@ const CompanyForm = props => {
     })
   }
 
-  // need to update handleSubmit to submit to the right model/backend call
   const handleSubmit = async e => {
     e.preventDefault()
     try {
@@ -82,7 +82,7 @@ const CompanyForm = props => {
           >
             <option disabled="disabled" selected="selected">
               Choose your company's size
-            </option> 
+            </option>
             <option
               name="size"
               value='1-10'
