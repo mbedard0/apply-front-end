@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -8,13 +8,22 @@ import UserProfile from './pages/UserProfile/UserProfile'
 // import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import CreateCompany from './pages/CreateCompany/CreateCompany'
+import CompanyIndex from './pages/CompanyIndex/CompanyIndex'
 import * as authService from './services/authService'
-import { createCompany } from './services/companyService'
+import { createCompany, getCompanies } from './services/companyService'
 
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
-  const [companies, setCompanies] = ([])
+  const [companies, setCompanies] = useState([])
+
+  useEffect(() => {
+    getCompanies()
+    .then(allCompanies => {
+      setCompanies(allCompanies)
+    })  
+    // need to reload after navigating here from create page
+    }, [])
 
   const handleLogout = () => {
     authService.logout()
@@ -60,7 +69,11 @@ const App = () => {
         />
         <Route 
           path='/createCompany'
-          element={user ? <CreateCompany handleAddCompany={handleAddCompany}/> : <Navigate to='/createCompany'/>}
+          element={user ? <CreateCompany handleAddCompany={handleAddCompany} user={user}/>: <Navigate to='/createCompany'/>}
+        />
+        <Route 
+          path='/companies'
+          element={<CompanyIndex companies={companies} />}
         />
       </Routes>
     </>
