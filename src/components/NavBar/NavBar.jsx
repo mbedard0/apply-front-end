@@ -27,6 +27,7 @@ const NavBar = ({ user, handleLogout }) => {
           {user ?
             <>
               <Link class="btn btn-ghost btn-sm rounded-btn" to="" onClick={handleLogout}>LOG OUT</Link>
+              <Link class="btn btn-ghost btn-sm rounded-btn" to="/profile">Profile</Link>
             </>
             :
             <>
