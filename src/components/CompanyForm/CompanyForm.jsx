@@ -25,9 +25,8 @@ const CompanyForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await companyService.create(formData)
-      props.handleSignupOrLogin()
-      navigate('/')
+      props.handleAddCompany(formData)
+      navigate('/companies')
     } catch (err) {
       props.updateMessage(err.message)
     }

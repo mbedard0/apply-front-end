@@ -8,10 +8,12 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import CreateCompany from './pages/CreateCompany/CreateCompany'
 import * as authService from './services/authService'
+import { createCompany } from './services/companyService'
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  const [user, setUser] = useState(authService.getUser())
+  const [companies, setCompanies] = ([])
 
   const handleLogout = () => {
     authService.logout()
@@ -21,6 +23,13 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddCompany = formData => {
+    createCompany(formData)
+    .then(newCompanyData => {
+      setCompanies([...companies, newCompanyData])
+    })
   }
 
   return (
@@ -46,7 +55,7 @@ const App = () => {
         />
         <Route 
           path='/createCompany'
-          element={user ? <CreateCompany /> : <Navigate to='/createCompany'/>}
+          element={user ? <CreateCompany handleAddCompany={handleAddCompany}/> : <Navigate to='/createCompany'/>}
         />
       </Routes>
     </>

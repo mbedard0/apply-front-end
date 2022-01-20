@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './SignupForm.module.css'
-import SignupFormCompany from '../CompanyForm/CompanyForm'
 import * as authService from '../../services/authService'
 
 const SignupForm = props => {
@@ -12,7 +10,7 @@ const SignupForm = props => {
     email: '',
     password: '',
     passwordConf: '',
-    status: ''
+    status: statusType
   })
 
   const handleChange = e => {
@@ -112,13 +110,6 @@ const SignupForm = props => {
             className="input input-bordered"
             placeholder="Password confirmation"
           />
-        </div>
-        <div>
-          {statusType === 'company' ?
-            <input name='status' hidden value='company' />
-            :
-            <input name='status' hidden value='individual' />
-          }
         </div>
         <div className='mt-7 mb-10 flex justify-center'>
           <button disabled={isFormInvalid()} className='btn btn-success mx-2'>
