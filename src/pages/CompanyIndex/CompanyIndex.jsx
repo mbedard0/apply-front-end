@@ -1,13 +1,22 @@
-
+import { useEffect } from "react";
+import { useState } from "react/cjs/react.development";
+import * as companyService from '../../services/companyService'
 
 const CompanyIndex = props => {
+  const [companies, setCompanies] = useState([])
+
+  useEffect(() => {
+    companyService.getCompanies()
+    .then(allCompanies => setCompanies(allCompanies))
+  },[companies])
+
   return (
     <>
       <h1 className="text-4xl pb-5 pt-2 flex justify-center">All Companies</h1>
       <div className="flex justify-center">
         {/* need to put this in a grid */}
-        {/* Link company show pages here */}
-        {props.companies.map(company => {
+        {/* link company show pages here */}
+        {companies.map(company => {
           return (
             <div class="card w-72 ml-5 card-bordered card-compact lg:card-normal">
               <figure>
