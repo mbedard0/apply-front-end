@@ -18,7 +18,7 @@ const CompanyIndex = props => {
         {/* link company show pages here */}
         {companies.map(company => {
           return (
-            <div class="card w-4/5 place-content-center card-bordered card-compact lg:card-normal">
+            <div class="card w-4/5 place-content-center card-bordered card-compact lg:card-normal" key={company._id}>
               <div class="card-body">
                 <Link
                   to='/companyDetails'
