@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
-      <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
+      <div class="navbar shadow-lg bg-neutral text-neutral-content">
         <div class="flex-none px-2 mx-2">
           <span class="text-lg font-bold">
             Apply
