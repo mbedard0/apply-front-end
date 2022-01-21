@@ -10,7 +10,7 @@ import CreateCompany from './pages/CreateCompany/CreateCompany'
 import CompanyIndex from './pages/CompanyIndex/CompanyIndex'
 import CompanyView from './pages/CompanyView/CompanyView'
 import * as authService from './services/authService'
-import { createCompany, getCompanies } from './services/companyService'
+import { createCompany } from './services/companyService'
 
 const App = () => {
   const navigate = useNavigate()
@@ -69,7 +69,7 @@ const App = () => {
         />
         <Route        
           path='/companyDetails'
-          element={<CompanyView companies={companies} />}
+          element={<CompanyView companies={companies}/>}
         />
       </Routes>
     </>
