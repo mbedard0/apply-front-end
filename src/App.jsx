@@ -5,10 +5,10 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import UserProfile from './pages/UserProfile/UserProfile'
-// import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import CreateCompany from './pages/CreateCompany/CreateCompany'
 import CompanyIndex from './pages/CompanyIndex/CompanyIndex'
+import CompanyView from './pages/CompanyView/CompanyView'
 import * as authService from './services/authService'
 import { createCompany, getCompanies } from './services/companyService'
 
@@ -65,7 +65,11 @@ const App = () => {
         />
         <Route 
           path='/companies'
-          element={<CompanyIndex />}
+          element={<CompanyIndex companies={companies} />}
+        />
+        <Route        
+          path='/companyDetails'
+          element={<CompanyView companies={companies} />}
         />
       </Routes>
     </>
