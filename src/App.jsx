@@ -11,12 +11,15 @@ import CompanyIndex from './pages/CompanyIndex/CompanyIndex'
 import CompanyView from './pages/CompanyView/CompanyView'
 import About from './pages/About/About'
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 import { createCompany } from './services/companyService'
 
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
   const [companies, setCompanies] = useState([])
+  const [profile, setProfile] = useState(profileService.getMyProfile())
+  // const [company, setCompany] = useState()
 
   const handleLogout = () => {
     authService.logout()
@@ -30,9 +33,9 @@ const App = () => {
 
   const handleAddCompany = formData => {
     createCompany(formData)
-    .then(newCompanyData => {
-      setCompanies([...companies, newCompanyData])
-    })
+      .then(newCompanyData => {
+        setCompanies([...companies, newCompanyData])
+      })
   }
 
   return (
@@ -52,7 +55,7 @@ const App = () => {
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
         /> */}
-        <Route 
+        <Route
           path='/about'
           element={<About />}
         />
@@ -62,19 +65,19 @@ const App = () => {
         />
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
-        <Route 
+        <Route
           path='/createCompany'
-          element={user ? <CreateCompany handleAddCompany={handleAddCompany} user={user}/>: <Navigate to='/createCompany'/>}
+          element={user ? <CreateCompany handleAddCompany={handleAddCompany} user={user} /> : <Navigate to='/login' />}
         />
-        <Route 
+        <Route
           path='/companies'
           element={<CompanyIndex companies={companies} />}
         />
-        <Route        
+        <Route
           path='/companyDetails'
-          element={<CompanyView companies={companies}/>}
+          element={<CompanyView companies={companies} />}
         />
       </Routes>
     </>

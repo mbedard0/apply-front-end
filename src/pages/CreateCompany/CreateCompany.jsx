@@ -4,6 +4,9 @@ import CompanyForm from '../../components/CompanyForm/CompanyForm'
 const CreateCompany = (props) => {
   return (
     <>
+      {/* {props.profile.status === 'individual' ? 
+      <div>You must be registered as a representative of a company to access this page.</div>
+      : */}
       <main>
         <div>
           <h1 className="text-4xl pb-5 pt-2 flex justify-center">
@@ -15,6 +18,7 @@ const CreateCompany = (props) => {
         </div>
         <CompanyForm {...props} />
       </main>
+      {/* } */}
     </>
   )
 }
