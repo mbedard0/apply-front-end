@@ -9,6 +9,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import CreateCompany from './pages/CreateCompany/CreateCompany'
 import CompanyIndex from './pages/CompanyIndex/CompanyIndex'
 import CompanyView from './pages/CompanyView/CompanyView'
+import About from './pages/About/About'
 import * as authService from './services/authService'
 import { createCompany } from './services/companyService'
 
@@ -51,6 +52,10 @@ const App = () => {
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
         /> */}
+        <Route 
+          path='/about'
+          element={<About />}
+        />
         <Route
           path="/profile"
           element={user ? <UserProfile user={user} /> : <Navigate to="/login" />}
