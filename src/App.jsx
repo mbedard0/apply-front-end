@@ -18,7 +18,6 @@ const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
   const [companies, setCompanies] = useState([])
-  const [profile, setProfile] = useState(profileService.getMyProfile())
   // const [company, setCompany] = useState()
 
   const handleLogout = () => {
