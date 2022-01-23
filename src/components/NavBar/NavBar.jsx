@@ -12,15 +12,15 @@ const NavBar = ({ user, handleLogout }) => {
         <div className="flex-1 px-2 mx-2">
           <div className="items-stretch hidden lg:flex">
             <Link className="btn btn-ghost btn-sm rounded-btn" to="/">Home</Link>
-            <a className="btn btn-ghost btn-sm rounded-btn">
+            <Link className="btn btn-ghost btn-sm rounded-btn" to='/jobs'>
               Find Jobs
-            </a>
+            </Link>
             <Link className="btn btn-ghost btn-sm rounded-btn" to='/companies'>
               Companies
             </Link>
-            <a className="btn btn-ghost btn-sm rounded-btn">
+            <Link className="btn btn-ghost btn-sm rounded-btn" to='/about'>
               About
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex-none">

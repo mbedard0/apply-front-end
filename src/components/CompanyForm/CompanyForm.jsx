@@ -22,6 +22,7 @@ const CompanyForm = props => {
     e.preventDefault()
     try {
       props.handleAddCompany(formData)
+      // update this to reload company data upon navigation!
       navigate('/companies')
     } catch (err) {
       props.updateMessage(err.message)
