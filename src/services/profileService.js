@@ -16,4 +16,11 @@ function getMyProfile(id) {
     .then(res => res.json())
 }
 
-export { getAllProfiles, getMyProfile }
+function getCompany(user_id) {
+  return fetch(`${BASE_URL}/company-owned/${user_id}`, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` }
+  })
+    .then(res => res.json())
+}
+
+export { getAllProfiles, getMyProfile, getCompany }
