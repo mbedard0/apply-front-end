@@ -3,14 +3,7 @@ import CompanyForm from '../../components/CompanyForm/CompanyForm'
 import * as profileService from '../../services/profileService'
 
 const CreateCompany = (props) => {
-  const [profile, setProfile] = useState()
-
-  useEffect(() => {
-    profileService.getMyProfile(props.user.profile)
-      .then(myProfile => {
-        setProfile(myProfile)
-      })
-  }, [])
+  const profile = props.profile
 
   if (profile === undefined) {
     return (

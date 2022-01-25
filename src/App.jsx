@@ -44,6 +44,7 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
+      console.log(user._id)
       profileService.getMyProfile(user._id)
       .then(profile => {
         setProfile(profile)
@@ -91,7 +92,7 @@ const App = () => {
         />
         <Route
           path='/createCompany'
-          element={user ? <CreateCompany handleAddCompany={handleAddCompany} user={user} /> : <Navigate to='/login' />}
+          element={user ? <CreateCompany handleAddCompany={handleAddCompany} user={user} profile={profile} /> : <Navigate to='/login' />}
         />
         <Route
           path='/companies'
