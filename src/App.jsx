@@ -27,6 +27,7 @@ const App = () => {
   const handleLogout = () => {
     authService.logout()
     setUser(null)
+    setProfile(null)
     navigate('/')
   }
 
@@ -61,7 +62,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar profile={profile} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route

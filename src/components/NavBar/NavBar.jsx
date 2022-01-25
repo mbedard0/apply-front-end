@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ profile, handleLogout }) => {
   return (
     <>
       <div class="navbar shadow-lg bg-neutral text-neutral-content">
@@ -15,12 +15,13 @@ const NavBar = ({ user, handleLogout }) => {
             <Link className="btn btn-ghost btn-sm rounded-btn" to='/jobs'>
               Find Jobs
             </Link>
+            {profile &&
+              <Link className="btn btn-ghost btn-sm rounded-btn" to='/create-job'>
+                Post a Job
+              </Link>
+            }
             <Link className="btn btn-ghost btn-sm rounded-btn" to='/companies'>
               Companies
-            </Link>
-            {/* conditionally render this (below) if user is a company  */}
-            <Link className="btn btn-ghost btn-sm rounded-btn" to='/create-job'>
-              Post a Job
             </Link>
             <Link className="btn btn-ghost btn-sm rounded-btn" to='/about'>
               About
@@ -28,7 +29,7 @@ const NavBar = ({ user, handleLogout }) => {
           </div>
         </div>
         <div className="flex-none">
-          {user ?
+          {profile ?
             <>
               <Link className="btn btn-ghost btn-sm rounded-btn" to="" onClick={handleLogout}>LOG OUT</Link>
               <Link className="btn btn-ghost btn-sm rounded-btn" to="/profile">Profile</Link>
