@@ -40,11 +40,16 @@ const App = () => {
         setCompanies([...companies, newCompanyData])
       })
   }
+
   useEffect(() => {
-    profileService.getMyProfile(user._id)
-    .then(profile => {
-      setProfile(profile)
-    })
+    if (user) {
+      profileService.getMyProfile(user._id)
+      .then(profile => {
+        setProfile(profile)
+      })
+    } else {
+      return
+    }
   }, [user])
 
   const handleAddJob = formData => {
@@ -77,7 +82,7 @@ const App = () => {
         />
         <Route
           path="/profile"
-          element={user ? <UserProfile user={user} /> : <Navigate to="/login" />}
+          element={user ? <UserProfile profile={profile} /> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"
