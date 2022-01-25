@@ -9,6 +9,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import CreateCompany from './pages/CreateCompany/CreateCompany'
 import CompanyIndex from './pages/CompanyIndex/CompanyIndex'
 import CompanyView from './pages/CompanyView/CompanyView'
+import JobCreate from './pages/JobCreate/JobCreate'
 import About from './pages/About/About'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
@@ -77,6 +78,10 @@ const App = () => {
         <Route
           path='/companyDetails'
           element={<CompanyView companies={companies} />}
+        />
+        <Route
+          path='/create-job'
+          element={<JobCreate user={user} />}
         />
       </Routes>
     </>
