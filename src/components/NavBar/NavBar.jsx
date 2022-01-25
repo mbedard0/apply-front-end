@@ -18,6 +18,10 @@ const NavBar = ({ user, handleLogout }) => {
             <Link className="btn btn-ghost btn-sm rounded-btn" to='/companies'>
               Companies
             </Link>
+            {/* conditionally render this (below) if user is a company  */}
+            <Link className="btn btn-ghost btn-sm rounded-btn" to='/create-job'>
+              Post a Job
+            </Link>
             <Link className="btn btn-ghost btn-sm rounded-btn" to='/about'>
               About
             </Link>
