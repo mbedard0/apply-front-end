@@ -20,13 +20,15 @@ const UserProfile = (props) => {
    if (profile === undefined) {
       return (
          <>
-            <h1 className="text-5xl flex justify-center">Loading Page...</h1>
+            <div className="text-5xl flex justify-center">
+               <button class="btn btn-lg btn-ghost loading">loading</button>
+            </div>
          </>
       )
    } else if (profile && company === undefined){
       return (
          <>
-         <main className="text-center">
+         <main className="text-center mt-10">
             {/* depending on what we want, the information below can change */}
             <h1 className="text-5xl font-bold">{profile.name}</h1>
             <p>{profile.email}</p>
@@ -44,7 +46,7 @@ const UserProfile = (props) => {
       )
       } else {
          return (
-            <main className="text-center">
+            <main className="text-center mt-10">
             <div>
                {/* put image of company brand here  */}
                <div className="avatar placeholder">
