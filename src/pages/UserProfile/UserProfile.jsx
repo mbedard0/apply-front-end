@@ -7,7 +7,7 @@ const UserProfile = (props) => {
    const [company, setCompany] = useState()
 
    useEffect(() => {
-      if (profile) {
+      if (profile && profile.status === 'company') {
          // temporary fix until controller function is fixed
          profileService.getCompany(profile.company[0])
             .then(company => {
@@ -18,7 +18,7 @@ const UserProfile = (props) => {
       }
    }, [profile])
 
-   if (company === undefined) {
+   if (company === undefined && profile === undefined) {
       return (
          <>
             <h1 className="text-5xl flex justify-center">Loading Page...</h1>
