@@ -2,26 +2,23 @@ import { useState, useEffect } from "react";
 import * as profileService from '../../services/profileService'
 
 const UserProfile = (props) => {
+   const profile = props.profile
 
-   const [profile, setProfile] = useState()
+   // need to fix models and then will refactor this to appropriate code
    const [company, setCompany] = useState()
 
    useEffect(() => {
-      profileService.getMyProfile(props.user.profile)
-         .then(myProfile => {
-            setProfile(myProfile)
-         })
+      if (profile) {
+         profileService.getCompany(profile._id)
+            .then(company => {
+               setCompany(company)
+            })
+      } else {
+         return
+      }
    }, [])
 
-   useEffect(() => {
-      profileService.getCompany(props.user.profile)
-         .then(company => {
-            setCompany(company)
-         })
-   }, [])
-
-
-   if (profile === undefined || company === undefined) {
+   if (profile === undefined) {
       return (
          <>
          </>
@@ -53,18 +50,18 @@ const UserProfile = (props) => {
                         {/* put image of company brand here  */}
                         <div className="avatar placeholder">
                            <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-                              <span className="text-xl">{company.companyName[0]}</span>
+                              {/* <span className="text-xl">{company.companyName[0]}</span> */}
                            </div>
                         </div>
-                        <h1 className="text-5xl font-bold">Company Name: {company.companyName}</h1>
+                        {/* <h1 className="text-5xl font-bold">Company Name: {company.companyName}</h1> */}
                         <h1 className="text-3xl font-bold">Company Owner: {profile.name}</h1>
                         <p>Company Email: {profile.email}</p>
                         {/* make sure status is correct */}
                         <p>{profile.status}</p>
 
                         {/* company details  */}
-                        <p>{company.description}</p>
-                        <p>Size: {company.size}</p>
+                        {/* <p>{company.description}</p> */}
+                        {/* <p>Size: {company.size}</p> */}
                      </div>
                      <div>
                         {/* job listings  */}
