@@ -19,6 +19,7 @@ import { createJob } from './services/jobService'
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState()
   const [companies, setCompanies] = useState([])
   const [jobs, setJobs] = useState([])
   // const [company, setCompany] = useState()
@@ -39,6 +40,12 @@ const App = () => {
         setCompanies([...companies, newCompanyData])
       })
   }
+  useEffect(() => {
+    profileService.getMyProfile(user._id)
+    .then(profile => {
+      setProfile(profile)
+    })
+  }, [user])
 
   const handleAddJob = formData => {
     createJob(formData)
