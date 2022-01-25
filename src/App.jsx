@@ -44,7 +44,6 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user._id)
       profileService.getMyProfile(user._id)
       .then(profile => {
         setProfile(profile)
