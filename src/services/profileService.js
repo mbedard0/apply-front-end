@@ -16,9 +16,8 @@ function getMyProfile(id) {
     .then(res => res.json())
 }
 
-function getCompany(user_id) {
-  console.log(user_id)
-  return fetch(`${BASE_URL}/company-owned/${user_id}`, {
+function getCompany(companyId) {
+  return fetch(`${BASE_URL}/company-owned/${companyId}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` }
   })
     .then(res => res.json())
