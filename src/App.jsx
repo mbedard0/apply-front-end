@@ -18,6 +18,7 @@ import { createCompany } from './services/companyService'
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState()
   const [companies, setCompanies] = useState([])
   // const [company, setCompany] = useState()
 
@@ -37,6 +38,12 @@ const App = () => {
         setCompanies([...companies, newCompanyData])
       })
   }
+  useEffect(() => {
+    profileService.getMyProfile(user._id)
+    .then(profile => {
+      setProfile(profile)
+    })
+  }, [user])
 
   return (
     <>
