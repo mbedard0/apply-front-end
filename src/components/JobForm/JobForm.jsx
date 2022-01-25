@@ -12,9 +12,25 @@ const JobForm = (props) => {
       categories: '',
    })
 
+   const handleChange = e => {
+      setFormData({
+         ...formData,
+         [e.target.name]: e.target.value,
+      })
+   }
 
+   const handleSubmit = async e => {
+      e.preventDefault()
+      try {
+         props.handleAddJob(formData)
+         // change this to job details!!!
+         navigate('/companies')
+      } catch (err) {
+         props.updateMessage(err.message)
+      }
+   }
 
-   return ( 
+   return (
       <>
          <h1 className="flex justify-center">Job Form Working</h1>
       </>

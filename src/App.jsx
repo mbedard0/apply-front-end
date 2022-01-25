@@ -14,11 +14,13 @@ import About from './pages/About/About'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import { createCompany } from './services/companyService'
+import { createJob } from './services/jobService'
 
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
   const [companies, setCompanies] = useState([])
+  const [jobs, setJobs] = useState([])
   // const [company, setCompany] = useState()
 
   const handleLogout = () => {
@@ -35,6 +37,13 @@ const App = () => {
     createCompany(formData)
       .then(newCompanyData => {
         setCompanies([...companies, newCompanyData])
+      })
+  }
+
+  const handleAddJob = formData => {
+    createJob(formData)
+      .then(newJobData => {
+        setJobs([...jobs, newJobData])
       })
   }
 
@@ -81,7 +90,7 @@ const App = () => {
         />
         <Route
           path='/create-job'
-          element={<JobCreate user={user} />}
+          element={<JobCreate handleAddJob={handleAddJob} user={user} />}
         />
       </Routes>
     </>
