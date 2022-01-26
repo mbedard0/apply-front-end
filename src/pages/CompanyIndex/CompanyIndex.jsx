@@ -21,7 +21,7 @@ const CompanyIndex = props => {
             <div class="card w-4/5 place-content-center card-bordered card-compact lg:card-normal" key={company._id}>
               <div class="card-body">
                 <Link
-                  to='/companyDetails'
+                  to={`/company-details/${company._id}`}
                   state={company}
                 >
                   <h2 class="card-title link link-neutral">{company.companyName}</h2>

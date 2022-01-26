@@ -47,15 +47,15 @@ const App = () => {
     createReview(formData)
       .then(newReviewData => {
         setReviews([...reviews, newReviewData])
-      }) 
+      })
   }
 
   useEffect(() => {
     if (user) {
       profileService.getMyProfile(user._id)
-      .then(profile => {
-        setProfile(profile)
-      })
+        .then(profile => {
+          setProfile(profile)
+        })
     } else {
       return
     }
@@ -98,7 +98,7 @@ const App = () => {
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/createCompany'
+          path='/create-company'
           element={user ? <CreateCompany handleAddCompany={handleAddCompany} user={user} profile={profile} /> : <Navigate to='/login' />}
         />
         <Route
@@ -106,7 +106,7 @@ const App = () => {
           element={<CompanyIndex companies={companies} />}
         />
         <Route
-          path='/companyDetails'
+          path='/company-details/:id'
           element={<CompanyView companies={companies} profile={profile} handleAddReview={handleAddReview} />}
         />
         <Route
