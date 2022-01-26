@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import * as companyService from '../../services/companyService'
 
 const CompanyView = (props) => {
+  // refresh on this page is broken currently
   const locationFunc = useLocation()
   const compInfo = locationFunc.state
 
@@ -24,6 +26,11 @@ const CompanyView = (props) => {
         <h1 className="text-4xl pb-5 pt-2 flex justify-center mb-1 mt-5">{company.companyName}</h1>
         <h2 className="flex justify-center text-2xl">{company.location}</h2>
         <p className="flex justify-center mt-5">{company.description}</p>
+        {props.profile.status === 'individual' ?
+          <ReviewForm {...props} />
+          :
+          <></>
+        }
       </>
     );
   }

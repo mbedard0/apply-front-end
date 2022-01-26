@@ -3,7 +3,6 @@ import * as profileService from '../../services/profileService'
 
 const UserProfile = (props) => {
    const profile = props.profile
-   // need to fix models and then will refactor this to appropriate code
    const [company, setCompany] = useState()
 
    useEffect(() => {

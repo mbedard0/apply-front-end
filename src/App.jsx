@@ -15,6 +15,7 @@ import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import { createCompany } from './services/companyService'
 import { createJob } from './services/jobService'
+import { createReview } from './services/reviewService'
 
 const App = () => {
   const navigate = useNavigate()
@@ -22,7 +23,7 @@ const App = () => {
   const [profile, setProfile] = useState()
   const [companies, setCompanies] = useState([])
   const [jobs, setJobs] = useState([])
-  // const [company, setCompany] = useState()
+  const [reviews, setReviews] = useState([])
 
   const handleLogout = () => {
     authService.logout()
@@ -40,6 +41,13 @@ const App = () => {
       .then(newCompanyData => {
         setCompanies([...companies, newCompanyData])
       })
+  }
+
+  const handleAddReview = formData => {
+    createReview(formData)
+      .then(newReviewData => {
+        setReviews([...reviews, newReviewData])
+      }) 
   }
 
   useEffect(() => {
@@ -99,7 +107,7 @@ const App = () => {
         />
         <Route
           path='/companyDetails'
-          element={<CompanyView companies={companies} />}
+          element={<CompanyView companies={companies} profile={profile} handleAddReview={handleAddReview} />}
         />
         <Route
           path='/create-job'
