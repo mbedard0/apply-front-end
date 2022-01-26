@@ -1,8 +1,9 @@
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, useLocation } from "react-router-dom"
 import React, { useState, useEffect } from 'react';
 
 const Review = (props) => {
   const navigate = useNavigate()
+  const location = useLocation()
   const [formData, setFormData] = useState({
     jobTitle: '',
     salary: '',
@@ -43,19 +44,19 @@ const Review = (props) => {
   const { jobTitle, salary, content, rating, length, stillEmployed } = formData
 
   const isFormInvalid = () => {
-    return !(content && rating && length)
+    return !(jobTitle, content && rating && stillEmployed)
   }
 
   return (
     <>
-      {/* {console.log(formData)} */}
+      {/* {console.log(location)} */}
       <div className="flex justify-center mt-10">
         <form
           autoComplete="off"
           onSubmit={handleSubmit}
           className='max-w-4l'
         >
-          <h1>Write your review</h1>
+          <h1>Write your review for {location.state.companyName}</h1>
           <div className='form-control mt-5'>
             <label htmlFor="jobTitle" className="label">
               <span class="label-text">Job Title</span>
@@ -86,6 +87,24 @@ const Review = (props) => {
               placeholder="Description"
             />
           </div>
+          <div className='form-control mt-5'>
+            <label htmlFor="salary" className="label">
+              <span class="label-text">Salary</span>
+            </label>
+              <label class="input-group input-group-md">
+                <input
+                  type="text"
+                  autoComplete="off"
+                  id="salary"
+                  value={salary}
+                  name="salary"
+                  onChange={handleChange}
+                  className="input input-bordered input-md"
+                  placeholder="$"
+                />
+                <span>yearly</span>
+              </label>
+          </div>
           <div className="form-control mt-5">
             <div class="form-control">
               <label class="cursor-pointer label">
@@ -105,6 +124,7 @@ const Review = (props) => {
             <select
               onChange={handleChange}
               name='length'
+              value={length}
               class="select select-bordered w-full max-w-xs"
             >
               <option disabled="disabled" selected="selected">
