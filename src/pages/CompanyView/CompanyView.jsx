@@ -4,10 +4,8 @@ import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import * as companyService from '../../services/companyService'
 
 const CompanyView = (props) => {
-  // refresh on this page is broken currently
   const locationFunc = useLocation()
   const compInfo = locationFunc.state
-
   const [company, setCompany] = useState()
 
   useEffect(() => {
@@ -15,7 +13,7 @@ const CompanyView = (props) => {
       .then(company => setCompany(company))
   }, [])
 
-  if (company === undefined) {
+  if (props.profile === undefined || company === undefined) {
     return (
       <>
       </>
