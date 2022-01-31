@@ -8,9 +8,9 @@ const Review = (props) => {
     jobTitle: '',
     salary: '',
     content: '',
-    rating: '',
-    company: '',
-    length: '',
+    rating: '5',
+    company: location.state._id,
+    length: 'Less than a year',
     stillEmployed: true,
     author: props.profile._id
   })
@@ -26,10 +26,10 @@ const Review = (props) => {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     setFormData({
+      ...formData,
       [e.target.name]: value
     });
   }
-
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -41,15 +41,29 @@ const Review = (props) => {
     }
   }
 
+  // const handleNumChange = e => {
+  //   // if it checks as a number, change it and return true
+  //   // else return false
+  //   // conditional rendering below, if returns false display message ('please enter a valid number')
+  //   let num = parseInt(e)
+  //   if (isNaN(num)) {
+  //     return false
+  //   } else {
+  //     setFormData({
+  //       ...formData,
+  //       [e.target.name]: e.target.value,
+  //     })
+  //   }
+  // }
+
   const { jobTitle, salary, content, rating, length, stillEmployed } = formData
 
   const isFormInvalid = () => {
-    return !(jobTitle, content && rating && stillEmployed)
+    return !(jobTitle && content && rating && length)
   }
 
   return (
     <>
-      {/* {console.log(location)} */}
       <div className="flex justify-center mt-10">
         <form
           autoComplete="off"
@@ -79,9 +93,9 @@ const Review = (props) => {
             <textarea
               type="text"
               autoComplete="off"
-              id="description"
+              id="content"
               value={content}
-              name="description"
+              name="content"
               onChange={handleChange}
               className="textarea h-24 textarea-bordered"
               placeholder="Description"
@@ -91,19 +105,19 @@ const Review = (props) => {
             <label htmlFor="salary" className="label">
               <span class="label-text">Salary</span>
             </label>
-              <label class="input-group input-group-md">
-                <input
-                  type="text"
-                  autoComplete="off"
-                  id="salary"
-                  value={salary}
-                  name="salary"
-                  onChange={handleChange}
-                  className="input input-bordered input-md"
-                  placeholder="$"
-                />
-                <span>yearly</span>
-              </label>
+            <label class="input-group input-group-md">
+              <input
+                type="text"
+                autoComplete="off"
+                id="salary"
+                value={salary}
+                name="salary"
+                onChange={handleChange}
+                className="input input-bordered input-md"
+                placeholder="$"
+              />
+              <span>yearly</span>
+            </label>
           </div>
           <div className="form-control mt-5">
             <div class="form-control">
@@ -127,10 +141,13 @@ const Review = (props) => {
               value={length}
               class="select select-bordered w-full max-w-xs"
             >
-              <option disabled="disabled" selected="selected">
+              <option 
+                disabled="disabled" 
+              >
                 -- Select --
               </option>
               <option
+                selected="selected"
                 name="length"
                 value='Less than a year'
               >
@@ -164,6 +181,16 @@ const Review = (props) => {
           </div>
           <div className="form-control mt-5">
             <label htmlFor="location" className="label-text">Rating</label>
+            <div class="rating">
+              <input type="radio" name='rating' class="mask mask-star-2 bg-warning" value='1' onChange={handleChange}/>
+              <input type="radio" name='rating' class="mask mask-star-2 bg-warning" value='2' onChange={handleChange}/>
+              <input type="radio" name='rating' class="mask mask-star-2 bg-warning" value='3' onChange={handleChange} />
+              <input type="radio" name='rating' class="mask mask-star-2 bg-warning" value='4' onChange={handleChange}/>
+              <input type="radio" name='rating' class="mask mask-star-2 bg-warning" value='5' onChange={handleChange} />
+            </div>
+
+          </div>
+          {/* 
             <input
               type="location"
               autoComplete="off"
@@ -174,10 +201,10 @@ const Review = (props) => {
               className="input input-bordered"
               placeholder="Location"
             />
-          </div>
+           */}
           <div className='mt-7 mb-10 flex justify-center'>
             <button disabled={isFormInvalid()} className='btn mx-2'>
-              Sign Up
+              Submit
             </button>
             <Link to="/">
               <button className='btn mx-2'>Cancel</button>
