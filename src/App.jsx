@@ -111,7 +111,7 @@ const App = () => {
         />
         <Route
           path='/create-job'
-          element={<JobCreate handleAddJob={handleAddJob} user={user} />}
+          element={<JobCreate handleAddJob={handleAddJob} profile={profile} />}
         />
       </Routes>
     </>
