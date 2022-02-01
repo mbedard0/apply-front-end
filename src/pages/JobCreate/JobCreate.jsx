@@ -4,47 +4,68 @@ import * as profileService from '../../services/profileService'
 
 
 const JobCreate = (props) => {
-   const [profile, setProfile] = useState()
+   const profile = props.profile
    const [company, setCompany] = useState()
+   const [adminCompanies, setAdminCompanies] = useState()
+
 
    useEffect(() => {
-      profileService.getMyProfile(props.user.profile)
-         .then(myProfile => {
-            setProfile(myProfile)
-         })
+      if (profile && profile.status === 'company') {
+         profileService.getCompany(profile.company[0])
+            .then(company => {
+               setCompany(company)
+            })
+      }
+      if (profile && profile.status === 'individual') {
+         profileService.getAllCompanies(profile._id)
+            .then(company => {
+               setAdminCompanies(company)
+            })
+      }
    }, [])
 
-   useEffect(() => {
-      profileService.getCompany(props.user.profile)
-         .then(company => {
-            setCompany(company)
-         })
-   }, [])
 
-   if (profile === undefined || company === undefined) {
+   if (profile === undefined) {
       return (
          <>
+            <p className="flex justify-center mt-10 text-4xl">loading</p>
          </>
       )
    } else {
-      return (
-         <>
-            {profile.status === 'individual' ?
+      if (profile.status === 'individual' && adminCompanies) {
+         return (
+            <>
+               <h1 className="flex justify-center mt-10 text-4xl">list the companies this admin is a part of....</h1>
+            </>
+         )
+      } else if (profile.status === 'individual' && adminCompanies === undefined) {
+         return (
+            <>
                <main>
                   <div className="flex justify-center">
                      <div className="mt-10">You must be registered as a representative of a company to access this page.</div>
                   </div>
                </main>
-               :
+            </>
+         )
+      } else {
+         if (company === undefined){
+            return (
+               <>
+                  <p>something went wrong</p>
+               </>
+            )
+         } else {
+            return (
                <main>
                   <div>
                      <h1 className="flex justify-center">Job Create Page Working</h1>
                   </div>
-                  <JobForm {...props} profile={profile} company={company} />
+                  <JobForm {...props} company={company} />
                </main>
-            }
-         </>
-      )
+            )
+         }
+      }
    }
 }
 

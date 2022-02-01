@@ -23,4 +23,11 @@ function getCompany(companyId) {
     .then(res => res.json())
 }
 
-export { getAllProfiles, getMyProfile, getCompany }
+function getAllCompanies(profileId) {
+  return fetch(`${BASE_URL}/all-company-admin/${profileId}`, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` }
+  })
+    .then(res => res.json())
+}
+
+export { getAllProfiles, getMyProfile, getCompany, getAllCompanies }
