@@ -11,6 +11,8 @@ const JobCreate = (props) => {
    // the form isn't available if the profile is an individual (profile.type === 'individual')
    // for users that are registered as companies: 1. need to get the names of companies from their profiles via a backend call. put that information into a select/dropdown for which company they are posting a job for
 
+   // changed some conditional rendering and comment out useeffect so page doesn't crash server. add some notes. major issues are the profile loading and the backend call the useeffect is trying. refresh is currently working.
+
 
    // useEffect(() => {
    //    if (profile && profile.status === 'company') {
