@@ -10,7 +10,7 @@ const SignupForm = props => {
     email: '',
     password: '',
     passwordConf: '',
-    status: statusType
+    status: statusType,
   })
 
   const handleChange = e => {
@@ -29,8 +29,7 @@ const SignupForm = props => {
       if (statusType === 'individual') {
         navigate('/profile')
       } else {
-        // need to add location/pass props here
-        navigate('/createCompany')
+        navigate('/create-company', {props: {props: props}})
       }
     } catch (err) {
       props.updateMessage(err.message)
@@ -120,7 +119,7 @@ const SignupForm = props => {
           </Link>
         </div>
       </form>
-      {statusType === 'company' ?
+      {/* {statusType === 'company' ?
         <ul class="w-full steps">
           <li class="step step-primary">Register</li>
           <li class="step">Set up your company</li>
@@ -132,7 +131,7 @@ const SignupForm = props => {
           <li class="step">Set up your profile</li>
           <li class="step">Start applying!</li>
         </ul>
-      }
+      } */}
     </>
   )
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import CompanyForm from '../../components/CompanyForm/CompanyForm'
 import * as profileService from '../../services/profileService'
 
 const CreateCompany = (props) => {
+  const location = useLocation()
   const profile = props.profile
 
   if (profile === undefined) {
@@ -29,6 +31,7 @@ const CreateCompany = (props) => {
             </div>
             <CompanyForm {...props} />
           </main>
+          // if the props pass x value, render this element below
         }
       </>
     )
