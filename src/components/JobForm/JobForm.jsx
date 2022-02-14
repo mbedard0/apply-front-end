@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const JobForm = (props) => {
    const navigate = useNavigate()
    const [formData, setFormData] = useState({
-      // trying to load props breaks this
+      // trying to load props breaks this. let's just set up the company in the backend
       // company: props.company._id,
       jobTitle: '',
       description: '',
@@ -13,12 +13,12 @@ const JobForm = (props) => {
       categories: '',
    })
 
-   // const handleChange = e => {
-   //    setFormData({
-   //       ...formData,
-   //       [e.target.name]: e.target.value,
-   //    })
-   // }
+   const handleChange = e => {
+      setFormData({
+         ...formData,
+         [e.target.name]: e.target.value,
+      })
+   }
 
    // **** the handleAddJob and backend call here is broken, which was causing the page to crash ****
    // const handleSubmit = async e => {
@@ -49,8 +49,7 @@ const JobForm = (props) => {
          <>
             <main>
                form goes here
-               {/* <h1 className="flex justify-center">Job Form Element</h1>
-            <form
+            {/* <form
                autoComplete="off"
                //   onSubmit={handleSubmit}
                className='max-w-4l'
@@ -60,15 +59,15 @@ const JobForm = (props) => {
                   <input
                      type="text"
                      autoComplete="off"
-                     id="companyName"
-                     // value={companyName}
-                     name="companyName"
+                     id="company"
+                     // value={props.company._id}
+                     name="company"
                      onChange={handleChange}
                      className="input input-bordered"
-                     placeholder="Company Name"
+                     placeholder="Company"
                   />
-               </div>
-               <div className='form-control mt-5'>
+               </div> */}
+               {/* <div className='form-control mt-5'>
                   <label htmlFor="description" className="label">
                      <span class="label-text">Description</span>
                   </label>
@@ -102,9 +101,9 @@ const JobForm = (props) => {
                   </button>
                   <Link to="/">
                      <button className='btn mx-2'>Cancel</button>
-                  </Link>
-               </div>
-            </form> */}
+                  </Link> */}
+               {/* </div> */}
+            {/* </form> */}
             </main>
          </>
       )
