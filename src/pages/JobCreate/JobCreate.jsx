@@ -7,22 +7,27 @@ const JobCreate = (props) => {
    const profile = props.profile
    const [company, setCompany] = useState()
    const [adminCompanies, setAdminCompanies] = useState()
+   // need to render a form
+   // the form isn't available if the profile is an individual (profile.type === 'individual')
+   // for users that are registered as companies: 1. need to get the names of companies from their profiles via a backend call. put that information into a select/dropdown for which company they are posting a job for
+
+   // changed some conditional rendering and comment out useeffect so page doesn't crash server. add some notes. major issues are the profile loading and the backend call the useeffect is trying. refresh is currently working.
 
 
-   useEffect(() => {
-      if (profile && profile.status === 'company') {
-         profileService.getCompany(profile.company[0])
-            .then(company => {
-               setCompany(company)
-            })
-      }
-      if (profile && profile.status === 'individual') {
-         profileService.getAllCompanies(profile._id)
-            .then(company => {
-               setAdminCompanies(company)
-            })
-      }
-   }, [])
+   // useEffect(() => {
+   //    if (profile && profile.status === 'company') {
+   //       profileService.getCompany(profile.company[0])
+   //          .then(company => {
+   //             setCompany(company)
+   //          })
+   //    }
+      // else if (profile && profile.status === 'individual') {
+      //    profileService.getAllCompanies(profile._id)
+      //       .then(company => {
+      //          setAdminCompanies(company)
+      //       })
+      // }
+   // }, [])
 
 
    if (profile === undefined) {
@@ -32,13 +37,20 @@ const JobCreate = (props) => {
          </>
       )
    } else {
-      if (profile.status === 'individual' && adminCompanies) {
+      if (profile.status === 'company') {
          return (
             <>
                <h1 className="flex justify-center mt-10 text-4xl">list the companies this admin is a part of....</h1>
+               <main>
+                  <div>
+                     <h1 className="flex justify-center">Job Create Page element below</h1>
+                  </div>
+                  <JobForm {...props} />
+               </main>
+
             </>
          )
-      } else if (profile.status === 'individual' && adminCompanies === undefined) {
+      } else if (profile.status === 'individual') {
          return (
             <>
                <main>
@@ -48,23 +60,6 @@ const JobCreate = (props) => {
                </main>
             </>
          )
-      } else {
-         if (company === undefined){
-            return (
-               <>
-                  <p>something went wrong</p>
-               </>
-            )
-         } else {
-            return (
-               <main>
-                  <div>
-                     <h1 className="flex justify-center">Job Create Page Working</h1>
-                  </div>
-                  <JobForm {...props} company={company} />
-               </main>
-            )
-         }
       }
    }
 }
