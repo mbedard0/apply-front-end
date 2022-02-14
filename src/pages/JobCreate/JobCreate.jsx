@@ -29,6 +29,13 @@ const JobCreate = (props) => {
       // }
    // }, [])
 
+   // return(
+   //    <>
+   //       <div>
+   //          hi hello
+   //       </div>
+   //    </>
+   // )
 
    if (profile === undefined) {
       return (
@@ -36,20 +43,19 @@ const JobCreate = (props) => {
             <p className="flex justify-center mt-10 text-4xl">loading</p>
          </>
       )
-   } else {
-      if (profile.status === 'company') {
-         return (
-            <>
-               <h1 className="flex justify-center mt-10 text-4xl">list the companies this admin is a part of....</h1>
-               <main>
-                  <div>
-                     <h1 className="flex justify-center">Job Create Page element below</h1>
-                  </div>
-                  <JobForm {...props} />
-               </main>
-
-            </>
-         )
+   } else if (profile.status === 'company') {
+      return (
+         <>
+            <div>
+               <h1 className="flex justify-center mt-10 text-4xl">
+                  Post a Job
+               </h1>
+               <div className="flex justify-center">
+               <JobForm {...props} />
+               </div>
+            </div>
+         </>
+      )
       } else if (profile.status === 'individual') {
          return (
             <>
@@ -60,7 +66,6 @@ const JobCreate = (props) => {
                </main>
             </>
          )
-      }
    }
 }
 
